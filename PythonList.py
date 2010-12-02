@@ -16,8 +16,7 @@ class ThingWrapper(QtCore.QObject):
     def _name(self):
         return str(self._thing)
 
-    @QtCore.Signal
-    def changed(self): pass
+    changed = QtCore.Signal()
 
     name = QtCore.Property(unicode, _name, notify=changed)
 
