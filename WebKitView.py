@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Make sure to install libqtwebkit4-declarative for this to work at all!
-
 import sys
 import time
 import json
@@ -28,7 +26,7 @@ def receiveData(json_str):
 app = QtGui.QApplication(sys.argv)
 
 view = QtDeclarative.QDeclarativeView()
-view.setRenderHints(QtGui.QPainter.Antialiasing | QtGui.QPainter.SmoothPixmapTransform)
+view.setRenderHints(QtGui.QPainter.SmoothPixmapTransform)
 view.setSource(__file__.replace('.py', '.qml'))
 rootObject = view.rootObject()
 rootObject.setProperty('url', __file__.replace('.py', '.html'))

@@ -1,6 +1,5 @@
 <html>
     <head>
-        <title>WebKitView Test!</title>
         <script type="text/javascript">
             function sendJSON(data) {
                 alert(JSON.stringify(data));
@@ -15,6 +14,9 @@
                 message = ['setRotation', angle];
                 sendJSON(message);
             }
+            function sendStuff() {
+                sendJSON([42, 'PySide', 1.23, true, {'a':1,'b':2}]);
+            }
         </script>
     </head>
     <body>
@@ -26,7 +28,7 @@
         </p>
         <p>
         Send arbitrary data structures:
-        <button onclick="sendJSON([42, 'PySide', 1.23, true, {'a': 1, 'b': 2}])">No, click me!</button>
+        <button onclick="sendStuff();">No, click me!</button>
         </p>
         <p>Received stuff:</p>
         <pre id="received"></pre>
