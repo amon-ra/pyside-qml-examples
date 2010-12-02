@@ -12,11 +12,9 @@ Rectangle {
         Text {
             y: index * C.Step.Y
             x: index * C.Step.X
-            anchors {
-                margins: C.Border
-            }
             color: C.Colors.Foreground
             font.bold: C.BoldText
+            font.pointSize: C.FontSize
             text: C.CustomText + C.Items.Suffixes[index]
         }
     }

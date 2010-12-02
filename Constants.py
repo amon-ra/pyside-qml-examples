@@ -8,7 +8,7 @@ from PySide import QtDeclarative
 
 Constants = {
     'CustomText': "Hey PySide!",
-    'Border': 15.24,
+    'FontSize': 9.24,
     'Colors': {
         'Background': "#8ac852",
         'Foreground': "#00672a",
