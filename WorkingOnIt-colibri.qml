@@ -5,11 +5,6 @@ import "colibri"
 Rectangle {
     width: 200; height: 160
 
-    function formatProgress(size, progress) {
-        return "" + parseInt(progress*size/1024) +
-            " KiB ("+parseInt(progress*100.) + "%)";
-    }
-
     Text {
         x: progressBar.x; y: 20
         width: progressBar.width
