@@ -72,7 +72,10 @@ downloader = Downloader('http://repo.meego.com/MeeGo/builds/trunk/1.1.80.8.20101
 app = QtGui.QApplication(sys.argv)
 view = QtDeclarative.QDeclarativeView()
 view.rootContext().setContextProperty('downloader', downloader)
-view.setSource(__file__.replace('.py', '.qml'))
+if sys.argv[-1].endswith('.qml'):
+    view.setSource(sys.argv[-1])
+else:
+    view.setSource(__file__.replace('.py', '.qml'))
 view.show()
 app.exec_()
 
