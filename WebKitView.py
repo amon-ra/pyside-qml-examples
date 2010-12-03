@@ -4,7 +4,7 @@ import sys
 import time
 import json
 
-from PySide import QtGui, QtDeclarative
+from PySide import QtCore, QtGui, QtDeclarative
 
 def sendData(data):
     global rootObject
@@ -19,7 +19,12 @@ def receiveData(json_str):
     print 'Received data:', data
 
     if len(data) == 2 and data[0] == 'setRotation':
-        rootObject.setProperty('rotation', data[1])
+        animation = QtCore.QPropertyAnimation(rootObject, 'rotation', rootObject)
+        animation.setDuration(700)
+        animation.setEasingCurve(QtCore.QEasingCurve.OutSine)
+        animation.setEndValue(data[1])
+        animation.start(QtCore.QAbstractAnimation.DeleteWhenStopped)
+        #rootObject.setProperty('rotation', data[1])
     else:
         sendData({'Hello': 'from PySide', 'itsNow': int(time.time())})
 
