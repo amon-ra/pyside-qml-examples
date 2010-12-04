@@ -6,8 +6,6 @@ import sys
 from PySide import QtCore, QtGui, QtDeclarative, QtOpenGL
 from QtMobility import Sensors
 
-app = QtGui.QApplication(sys.argv)
-
 class Listener(QtCore.QObject):
     def __init__(self):
         QtCore.QObject.__init__(self)
@@ -37,6 +35,8 @@ class Listener(QtCore.QObject):
         accel = self.sender()
         # Scale the x axis reading to keep the image roughly steady
         self.rotation = accel.reading().x()*7
+
+app = QtGui.QApplication(sys.argv)
 
 accel = Sensors.QAccelerometer()
 listener = Listener()
