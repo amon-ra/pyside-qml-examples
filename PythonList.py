@@ -21,7 +21,7 @@ class ThingWrapper(QtCore.QObject):
     name = QtCore.Property(unicode, _name, notify=changed)
 
 class ThingListModel(QtCore.QAbstractListModel):
-    COLUMNS = ('thing',)
+    COLUMNS = ['thing']
 
     def __init__(self, things):
         QtCore.QAbstractListModel.__init__(self)
