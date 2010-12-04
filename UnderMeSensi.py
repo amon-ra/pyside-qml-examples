@@ -11,6 +11,7 @@ class Listener(QtCore.QObject):
         QtCore.QObject.__init__(self)
         self._initial = True
         self._rotation = 0.
+        self._tilt = 0.
 
     def get_rotation(self):
         return self._rotation
@@ -26,8 +27,17 @@ class Listener(QtCore.QObject):
 
         self.on_rotation.emit()
 
+    def get_tilt(self):
+        return self._tilt
+
+    def set_tilt(self, tilt):
+        self._tilt = tilt
+        self.on_rotation.emit()
+
     on_rotation = QtCore.Signal()
     rotation = QtCore.Property(float, get_rotation, set_rotation, \
+            notify=on_rotation)
+    tilt = QtCore.Property(float, get_tilt, set_tilt, \
             notify=on_rotation)
 
     @QtCore.Slot()
@@ -35,6 +45,7 @@ class Listener(QtCore.QObject):
         accel = self.sender()
         # Scale the x axis reading to keep the image roughly steady
         self.rotation = accel.reading().x()*7
+        self.tilt = (accel.reading().y()-10)*8
 
 app = QtGui.QApplication(sys.argv)
 
