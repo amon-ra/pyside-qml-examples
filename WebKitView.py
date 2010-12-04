@@ -2,7 +2,11 @@
 
 import sys
 import time
-import json
+
+try:
+    import simplejson as json
+except ImportError:
+    import json
 
 from PySide import QtCore, QtGui, QtDeclarative
 
