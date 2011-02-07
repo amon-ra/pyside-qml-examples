@@ -7,6 +7,7 @@ import sys
 from PySide import QtCore
 from PySide import QtGui
 from PySide import QtDeclarative
+from PySide import QtOpenGL
 
 class ZenWrapper(QtCore.QObject):
     def __init__(self, zenItem):
@@ -57,17 +58,17 @@ class Controller(QtCore.QObject):
         view.setWindowTitle('%s (%d)' % (__doc__, len(new_list)))
 
         if new_value:
-            pa = QtCore.QParallelAnimationGroup(parent)
+            pa = QtCore.QSequentialAnimationGroup(parent)
             anim = QtCore.QPropertyAnimation(checkbox, 'scale')
             anim.setDuration(700)
             anim.setStartValue(10)
             anim.setEndValue(1)
             anim.setEasingCurve(QtCore.QEasingCurve.OutSine)
             pa.addAnimation(anim)
-            anim = QtCore.QPropertyAnimation(parent, 'opacity', parent)
-            anim.setDuration(200)
-            anim.setStartValue(.5)
-            anim.setEndValue(1)
+            anim = QtCore.QPropertyAnimation(parent, 'rotation', parent)
+            anim.setDuration(100)
+            anim.setStartValue(-180)
+            anim.setEndValue(0)
             pa.addAnimation(anim)
             pa.start(QtCore.QAbstractAnimation.DeleteWhenStopped)
 
@@ -79,6 +80,8 @@ zenItemList = ZenListModel(zenItems)
 app = QtGui.QApplication(sys.argv)
 
 view = QtDeclarative.QDeclarativeView()
+glw = QtOpenGL.QGLWidget()
+view.setViewport(glw)
 view.setWindowTitle(__doc__)
 view.setResizeMode(QtDeclarative.QDeclarativeView.SizeRootObjectToView)
 

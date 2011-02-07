@@ -24,8 +24,9 @@ def receiveData(json_str):
 
     if len(data) == 2 and data[0] == 'setRotation':
         animation = QtCore.QPropertyAnimation(rootObject, 'rotation', rootObject)
-        animation.setDuration(700)
-        animation.setEasingCurve(QtCore.QEasingCurve.OutSine)
+        animation.setDuration(3000)
+        animation.setEasingCurve(QtCore.QEasingCurve.InOutElastic)
+        # eh immer: animation.setStartValue(rootObject.property('rotation'))
         animation.setEndValue(data[1])
         animation.start(QtCore.QAbstractAnimation.DeleteWhenStopped)
         #rootObject.setProperty('rotation', data[1])
