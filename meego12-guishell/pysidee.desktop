@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PySide Shell
+Exec=/root/pysidee/pyside.py
+Icon=/root/pysidee/pyside.png
+Terminal=false
+Type=Application
+Categories=Network;
